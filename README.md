@@ -33,6 +33,8 @@
 
 3. Open a terminal and navigate to the directory you'd like to sort (or just right click in the directory, and select 'Open In Terminal', which is better in my opinion), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
 
+![Demo](./assets/demo2.png)
+
 # Contact Me
 
 Feel free to contact me with any questions or concerns at: oneilb123@gmail.com
