@@ -23,7 +23,7 @@
 ![Demo](./assets/demo.png)
 
 
-**If a file that is to be moved has a duplicate in its target folder, the date and time will be appended to the duplicate so that nothing is overwritten. This doesn't work with duplicate folder names, where the original folder has files inside of it. In this case, the folder simply won't be moved. You DON'T have to worry about anything being overwritten!**
+**If a file that is to be moved has a duplicate in its target folder, the date and time will be appended to the duplicate so that nothing is overwritten. This doesn't work with duplicate folder names, where the original folder has files inside of it. In this case, the folder simply won't be moved. You DON'T have to worry about anything being overwritten.**
 
 # Installation (Windows)
 
