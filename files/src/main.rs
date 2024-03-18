@@ -1,4 +1,5 @@
 extern crate directories;
+use chrono::{DateTime, Local, TimeZone, Utc};
 use directories::UserDirs;
 use mime_guess::{from_ext, mime::STAR_STAR};
 use std::{
@@ -10,6 +11,8 @@ use std::{
 
 extern crate mime;
 extern crate mime_guess;
+
+extern crate chrono;
 
 fn get_current_working_dir() -> PathBuf {
     env::current_dir().unwrap()
@@ -112,10 +115,33 @@ fn create_folders(
                 }
                 continue;
             }
-            None => {
-                
-            }
+            None => {}
         }
+    }
+}
+
+fn file_already_exists_add_date(dir: &PathBuf, name: &PathBuf, key: &PathBuf) -> PathBuf {
+    let suffix = name.file_name().unwrap().to_str().unwrap();
+    let suffix_path: PathBuf = PathBuf::from(suffix);
+
+    let date_time = Local::now();
+    let dt_formatted = format!("{}", date_time.format("%Y-%m-%d %H%M%S"));
+
+    let no_ext = Path::file_stem(&suffix_path).unwrap().to_str().unwrap();
+
+    let mut new_location: PathBuf = PathBuf::from("placeholder");
+
+    match name.extension().and_then(std::ffi::OsStr::to_str) {
+        Some(ext) => {
+            let extension_str = name.extension().unwrap().to_str().unwrap();
+
+            let end_of_path = format!("{} - {}.{}", no_ext, dt_formatted, extension_str);
+
+            new_location = [&dir, &key, &PathBuf::from(&end_of_path)].iter().collect();
+
+            new_location
+        }
+        None => name.to_path_buf(),
     }
 }
 
@@ -132,18 +158,28 @@ fn sort_dir(
         let mut mime_type = from_ext("dummy.txt").first_or_octet_stream(); // placeholder
 
         let suffix = cur_file.file_name().unwrap().to_str().unwrap();
-        let suffix_path = PathBuf::from(suffix);
+        let suffix_path: PathBuf = PathBuf::from(suffix);
 
         // file folder types
         if cur_file.is_dir()
             && !types.contains_key(&cur_file)
             && !complex_types.contains_key(&cur_file)
         {
-            let new_location: PathBuf = [&dir, &PathBuf::from("_FOLDERS"), &suffix_path]
+            let mut new_location: PathBuf = [&dir, &PathBuf::from("_FOLDERS"), &suffix_path]
                 .iter()
                 .collect();
 
-            match fs::rename(&cur_file, &new_location) {
+            if new_location.exists() {
+            
+                if new_location.exists() {
+                    new_location =
+                        file_already_exists_add_date(&dir, &new_location, &PathBuf::from("_FOLDERS"));
+                }
+            }
+
+            let final_location = new_location;
+
+            match fs::rename(&cur_file, &final_location) {
                 Ok(_) => {
                     continue;
                 }
@@ -159,9 +195,20 @@ fn sort_dir(
                 mime_type = from_ext(ext).first_or(STAR_STAR);
                 if &mime_type == &STAR_STAR {
                     if !cur_file.is_dir() {
-                        let new_location: PathBuf = [&dir, &PathBuf::from("ٴOTHER"), &suffix_path]
-                            .iter()
-                            .collect();
+                        let mut new_location: PathBuf =
+                            [&dir, &PathBuf::from("ٴOTHER"), &suffix_path]
+                                .iter()
+                                .collect();
+
+                        if new_location.exists() {
+                            if new_location.exists() {
+                                new_location = file_already_exists_add_date(
+                                    &dir,
+                                    &new_location,
+                                    &PathBuf::from("ٴOTHER"),
+                                );
+                            }
+                        }
 
                         match fs::rename(&cur_file, &new_location) {
                             Ok(_) => {
@@ -176,9 +223,19 @@ fn sort_dir(
             }
             None => {
                 if !cur_file.is_dir() {
-                    let new_location: PathBuf = [&dir, &PathBuf::from("ٴOTHER"), &suffix_path]
+                    let mut new_location: PathBuf = [&dir, &PathBuf::from("ٴOTHER"), &suffix_path]
                         .iter()
                         .collect();
+
+                    if new_location.exists() {
+                        if new_location.exists() {
+                            new_location = file_already_exists_add_date(
+                                &dir,
+                                &new_location,
+                                &PathBuf::from("ٴOTHER"),
+                            );
+                        }
+                    }
 
                     match fs::rename(&cur_file, &new_location) {
                         Ok(_) => {
@@ -195,9 +252,17 @@ fn sort_dir(
         // complex mime types
         for (&key, value) in &complex_types {
             if !cur_file.is_dir() && value.contains(&mime_type.to_string().as_str()) {
-                let new_location: PathBuf = [&dir, &key, &suffix_path].iter().collect();
+                let mut new_location: PathBuf = [&dir, &key, &suffix_path].iter().collect();
 
-                match fs::rename(&cur_file, &new_location) {
+                if new_location.exists() {
+                    if new_location.exists() {
+                        new_location = file_already_exists_add_date(&dir, &new_location, key);
+                    }
+                }
+
+                let final_location = new_location;
+
+                match fs::rename(&cur_file, &final_location) {
                     Ok(_) => {
                         break;
                     }
@@ -210,15 +275,23 @@ fn sort_dir(
 
         // simple mime types
         for (&key, value) in &types {
-            // complex mime types
             if !&cur_file.is_dir() && mime_type.to_string().starts_with(&*value) {
-                let new_location: PathBuf = [&dir, &key, &suffix_path].iter().collect();
+                let mut new_location: PathBuf = [&dir, &key, &suffix_path].iter().collect();
 
-                match fs::rename(&cur_file, &new_location) {
+                if new_location.exists() {
+                    new_location = file_already_exists_add_date(&dir, &new_location, key);
+                }
+
+                let final_location = new_location;
+
+                match fs::rename(&cur_file, &final_location) {
                     Ok(_) => {
+                        dbg!("reaced");
                         break;
                     }
                     Err(_) => {
+                        dbg!("err");
+
                         break;
                     }
                 }
@@ -305,6 +378,7 @@ fn main() {
         (&work, office_mimetypes),
         (&pdf, pdf_mimetypes),
     ]);
+
     create_folders(&working_dir, &simple_types, &complex_types);
 
     sort_dir(working_dir, simple_types, complex_types);
