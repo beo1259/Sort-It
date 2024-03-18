@@ -22,6 +22,9 @@
 
 ![Demo](./assets/demo.png)
 
+
+**If a file that is to be moved has a duplicate in its target folder, the date and time will be appended to the duplicate so that nothing is overwritten. This doesn't work with duplicate folder names, where the original folder has files inside of it. In this case, the folder simply won't be moved. You DON'T have to worry about anything being overwritten!**
+
 # Installation (Windows)
 
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
@@ -44,6 +47,7 @@
 3. Make sure that you give **sort-it** and **unsort-it** execution privileges if necessary.
 4. Then you can run ```wine [PATH-TO-REPO]/Sort-It/sort-it.exe```
 ![Demo](./assets/demo3.png)
+
 
 # Contact Me
 
