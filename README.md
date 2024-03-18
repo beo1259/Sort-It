@@ -29,7 +29,7 @@
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
 2. Add the path to 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
    - The path to 'sort-it.exe' and 'unsort-it.exe is '[PATH-TO-REPO]/Sort-It/'
-   - Do not include the actual .exe in that path, only the path up to and including the repo.
+   - Do not include the actual .exe in that path, only the path up to and including the repository.
    - This is what mine looks like in my Environment Variables > System Variables > Path:
    
 <img src="assets/mypaths.png" alt="drawing" width="400"/>
