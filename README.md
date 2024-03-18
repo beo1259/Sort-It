@@ -40,7 +40,8 @@
 1. As of right now Linux & MacOS users must have **'wine'** installed as .exe files are Windows executables, and wine allows Unix system to run .exes in that environment.
    - You can find instructions for installing wine [here](https://wiki.winehq.org/Download).
 2. Once wine is installed, simply clone the repository somewhere that you **do not** plan to sort (I recommend your home directory, which makes the command simpler).
-3. Then you can run ```wine [PATH-TO-CLONED-REPO]/sort-it.exe```
+3. Make sure that you give **sort-it** and **unsort-it** execution privileges if necessary.
+4. Then you can run ```wine [PATH-TO-CLONED-REPO]/sort-it.exe```
 ![Demo](./assets/demo3.png)
 
 # Contact Me
