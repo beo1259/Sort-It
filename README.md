@@ -12,13 +12,12 @@
 - **Video**: Video files.
 - **Images**: Image files.
 - **PDF**: PDF files.
-- **Audio**: Audio files.
 - **Text & Code**: Text and Code files.
 - **Work**: MS office type files.
 - **Audio**: Zipped folder (zip, rar, tar).
 - **Other**: Any file that couldn't be identified as any of the above categories.
 
-#### Please Note, any of the above folders will only be created if your directory contains at least one of their type (ex. if you have no audio files, no 'Audio' Folder will be created).
+#### Please note that any of the above folders will only be created if your directory contains at least one file of their respective type. For instance, if there are no audio files in the directory you are sorting, the 'Audio' folder will not be created.
 
 ![Demo](./assets/demo.png)
 
@@ -28,9 +27,9 @@
 # Installation (Windows)
 
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
-2. Add the path to the 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
+2. Add the path to 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
    - The path to 'sort-it.exe' and 'unsort-it.exe is '[PATH-TO-REPO]/Sort-It/'
-   - Do not include the actual .exe in that path, only the up to and including the repo.
+   - Do not include the actual .exe in that path, only the path up to and including the repo.
    - This is what mine looks like in my Environment Variables > System Variables > Path:
    
 <img src="assets/mypaths.png" alt="drawing" width="400"/>
@@ -41,7 +40,7 @@
 
 # Installation (Linux & MacOS)
 
-1. As of right now Linux & MacOS users must have **'wine'** installed as **'sort-it'** and **'unsort-it'** files are Windows .exe files, and wine allows Unix systems to run .exes in their environemnt.
+1. As of right now Linux & MacOS users must have **'wine'** installed as **'sort-it'** and **'unsort-it'** files are Windows .exe files, and wine allows Unix systems to run exe files in their environemnt.
    - You can find instructions for installing wine [here](https://wiki.winehq.org/Download).
 2. Once wine is installed, simply clone the repository somewhere that you **do not** plan to sort (I recommend your home directory, which makes the command simpler).
 3. Make sure that you give **sort-it** and **unsort-it** execution privileges if necessary.
@@ -51,4 +50,4 @@
 
 # Contact Me
 
-Feel free to contact me with any questions or concerns at: oneilb123@gmail.com
+Please feel free to contact me with any questions or concerns at: oneilb123@gmail.com
