@@ -31,7 +31,7 @@
    
      ![My Paths](./assets/mypaths.png)
 
-3. Open a terminal and navigate to the directory you'd like to sort (or just right click in the directory, and select 'Open In Terminal', which is better in my opinion), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
+3. Type 'cmd' in the directory path you'd to sort in file explorer (or just cd into it through terminal), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
 
 ![Demo](./assets/demo2.png)
 
