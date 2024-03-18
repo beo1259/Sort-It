@@ -18,6 +18,8 @@
 - **Audio**: Zipped folder (zip, rar, tar).
 - **Other**: Any file that couldn't be identified as any of the above categories.
 
+#### Please Note, any of the above folders will only be created if your directory contains at least one of their type (ex. if you have no audio files, no 'Audio' Folder will be created).
+
 ![Demo](./assets/demo.png)
 
 # Installation (Windows)
