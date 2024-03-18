@@ -31,7 +31,7 @@
    
      ![My Paths](./assets/mypaths.png)
 
-3. Type 'cmd' in the address bar of the directory you'd like to sort (or just cd into it through terminal), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
+3. Type 'cmd' in the address bar of the directory you'd like to sort (or just cd into it through powershell), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
 
 ![Demo](./assets/demo2.png)
 
