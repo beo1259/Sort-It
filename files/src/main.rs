@@ -18,98 +18,98 @@ fn get_current_working_dir() -> PathBuf {
     env::current_dir().unwrap()
 }
 
-// fn create_folders(
-//     dir: &PathBuf,
-//     types: &HashMap<&PathBuf, &str>,
-//     complex_types: &HashMap<&PathBuf, Vec<&str>>,
-// ) {
-//     let files = fs::read_dir(&dir).unwrap();
+fn create_folders(
+    dir: &PathBuf,
+    types: &HashMap<&PathBuf, &str>,
+    complex_types: &HashMap<&PathBuf, Vec<&str>>,
+) {
+    let files = fs::read_dir(&dir).unwrap();
 
-//     let simple_values: Vec<&str> = types.values().cloned().collect();
-//     let complex_values: Vec<Vec<&str>> = complex_types.values().cloned().collect();
+    let simple_values: Vec<&str> = types.values().cloned().collect();
+    let complex_values: Vec<Vec<&str>> = complex_types.values().cloned().collect();
 
-//     let other_dir: PathBuf = [&dir, &&PathBuf::from("ٴOTHER")].iter().collect();
+    let other_dir: PathBuf = [&dir, &&PathBuf::from("ٴOTHER")].iter().collect();
 
-//     if !other_dir.exists() {
-//         match create_dir(other_dir) {
-//             Ok(_) => {}  // pass here cuz successful
-//             Err(_) => {} // otherwise tellem wassup
-//         }
-//     }
+    if !other_dir.exists() {
+        match create_dir(other_dir) {
+            Ok(_) => {}  // pass here cuz successful
+            Err(_) => {} // otherwise tellem wassup
+        }
+    }
 
-//     for file in files {
-//         let cur_file = file.unwrap().path();
+    for file in files {
+        let cur_file = file.unwrap().path();
 
-//         if cur_file.is_dir() {
-//             let folders_dir: PathBuf = [&dir, &&PathBuf::from("_FOLDERS")].iter().collect();
+        if cur_file.is_dir() {
+            let folders_dir: PathBuf = [&dir, &&PathBuf::from("_FOLDERS")].iter().collect();
 
-//             if !folders_dir.exists() {
-//                 match create_dir(folders_dir) {
-//                     Ok(_) => {}
-//                     Err(_) => {}
-//                 }
-//             }
-//             continue;
-//         }
+            if !folders_dir.exists() {
+                match create_dir(folders_dir) {
+                    Ok(_) => {}
+                    Err(_) => {}
+                }
+            }
+            continue;
+        }
 
-//         match cur_file.extension().and_then(std::ffi::OsStr::to_str) {
-//             Some(ext) => {
-//                 let cur_type = from_ext(ext).first_or(STAR_STAR);
-//                 let dir_val = simple_values
-//                     .iter()
-//                     .find(|&value| cur_type.as_ref().starts_with(value));
-//                 let dir_val_complex = complex_values
-//                     .iter()
-//                     .find(|&value| value.contains(&cur_type.as_ref()));
+        match cur_file.extension().and_then(std::ffi::OsStr::to_str) {
+            Some(ext) => {
+                let cur_type = from_ext(ext).first_or(STAR_STAR);
+                let dir_val = simple_values
+                    .iter()
+                    .find(|&value| cur_type.as_ref().starts_with(value));
+                let dir_val_complex = complex_values
+                    .iter()
+                    .find(|&value| value.contains(&cur_type.as_ref()));
 
-//                 // LOGIC FOR COMPLEX MIME_TYPES
-//                 if complex_values
-//                     .iter()
-//                     .any(|value: &Vec<&str>| value.contains(&cur_type.as_ref()))
-//                 {
-//                     let value_of_complex_dir = dir_val_complex.unwrap();
-//                     let desired_complex_key = complex_types.iter().find_map(|(key, val)| {
-//                         if val == value_of_complex_dir {
-//                             Some(key)
-//                         } else {
-//                             None
-//                         }
-//                     });
-//                     if !desired_complex_key.unwrap().exists() {
-//                         match create_dir(&desired_complex_key.unwrap()) {
-//                             Ok(_) => {}  // pass here cuz successful
-//                             Err(_) => {} // otherwise tellem wassup
-//                         }
-//                     }
-//                     continue;
-//                 }
+                // LOGIC FOR COMPLEX MIME_TYPES
+                if complex_values
+                    .iter()
+                    .any(|value: &Vec<&str>| value.contains(&cur_type.as_ref()))
+                {
+                    let value_of_complex_dir = dir_val_complex.unwrap();
+                    let desired_complex_key = complex_types.iter().find_map(|(key, val)| {
+                        if val == value_of_complex_dir {
+                            Some(key)
+                        } else {
+                            None
+                        }
+                    });
+                    if !desired_complex_key.unwrap().exists() {
+                        match create_dir(&desired_complex_key.unwrap()) {
+                            Ok(_) => {}  // pass here cuz successful
+                            Err(_) => {} // otherwise tellem wassup
+                        }
+                    }
+                    continue;
+                }
 
-//                 // LOGIC FOR SIMPLE MIME_TYPES
-//                 if simple_values
-//                     .iter()
-//                     .any(|&value| cur_type.as_ref().starts_with(value))
-//                 {
-//                     let value_of_dir = dir_val.unwrap();
-//                     let desired_key = types.iter().find_map(|(&key, &val)| {
-//                         if &val == value_of_dir {
-//                             Some(key)
-//                         } else {
-//                             None
-//                         }
-//                     });
-//                     if !&desired_key.unwrap().exists() {
-//                         match create_dir(&desired_key.unwrap()) {
-//                             Ok(_) => {}  // pass here cuz successful
-//                             Err(_) => {} // otherwise tellem wassup
-//                         }
-//                     }
-//                 }
-//                 continue;
-//             }
-//             None => {}
-//         }
-//     }
-// }
+                // LOGIC FOR SIMPLE MIME_TYPES
+                if simple_values
+                    .iter()
+                    .any(|&value| cur_type.as_ref().starts_with(value))
+                {
+                    let value_of_dir = dir_val.unwrap();
+                    let desired_key = types.iter().find_map(|(&key, &val)| {
+                        if &val == value_of_dir {
+                            Some(key)
+                        } else {
+                            None
+                        }
+                    });
+                    if !&desired_key.unwrap().exists() {
+                        match create_dir(&desired_key.unwrap()) {
+                            Ok(_) => {}  // pass here cuz successful
+                            Err(_) => {} // otherwise tellem wassup
+                        }
+                    }
+                }
+                continue;
+            }
+            None => {}
+        }
+    }
+}
 
 fn file_already_exists_add_date(dir: &PathBuf, name: &PathBuf, key: &PathBuf) -> PathBuf {
     let suffix = name.file_name().unwrap().to_str().unwrap();
@@ -367,7 +367,7 @@ fn main() {
         (&pdf, pdf_mimetypes),
     ]);
 
-    // create_folders(&working_dir, &simple_types, &complex_types);
+    create_folders(&working_dir, &simple_types, &complex_types);
 
     sort_dir(working_dir, simple_types, complex_types);
 }
