@@ -24,8 +24,8 @@
 
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
 2. Add the path to the 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
-   - The path to 'sort-it.exe' is '[WHERE-YOU-PUT-IT]/files/target/release/'
-   - The path to 'unsort-it.exe' is '[WHERE-YOU-PUT-IT]/unsort/target/release/'
+   - The path to 'sort-it.exe' is '[WHERE-YOU-CLONED-REPO]/files/target/release/'
+   - The path to 'unsort-it.exe' is '[WHERE-YOU-CLONED-REPO]/unsort/target/release/'
    - Do not include the actual .exe in that path, only the up to the release.
    - This is what mine looks like in my Environment Variables > System Variables > Path:
    
