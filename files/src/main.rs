@@ -286,12 +286,9 @@ fn sort_dir(
 
                 match fs::rename(&cur_file, &final_location) {
                     Ok(_) => {
-                        dbg!("reaced");
                         break;
                     }
                     Err(_) => {
-                        dbg!("err");
-
                         break;
                     }
                 }
