@@ -130,7 +130,7 @@ fn sort_dir(
             }
         }
         }
-        println!("\n{:?} is now sorted!\n\nIf anything is still unsorted, try moving those files manually and see what the issue is (file open somewhere else, lacking permissions, etc.)!", get_current_working_dir().to_str().unwrap())
+        println!("\n{:?} is now sorted!\n\nIf anything is still unsorted, try moving those files manually and see what the issue is (file open somewhere else, lacking permissions, etc.)!\n", get_current_working_dir().to_str().unwrap())
 
     }
 

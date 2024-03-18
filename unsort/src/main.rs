@@ -41,7 +41,7 @@ fn unsort(sorted_dirs: [&PathBuf; 10], working_dir: PathBuf){
         }
     }
 
-    println!("\n{:?} is no longer sorted!\n\nIf anything remains sorted, try moving those files yourself and see what the issue is (file open somewhere else, lacking permissions, etc.)!", get_current_working_dir().to_str().unwrap())
+    println!("\n{:?} is no longer sorted!\n\nIf anything remains sorted, try moving those files yourself and see what the issue is (file open somewhere else, lacking permissions, etc.)!\n", get_current_working_dir().to_str().unwrap())
 
 }
 
