@@ -26,12 +26,11 @@
 
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
 2. Add the path to the 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
-   - The path to 'sort-it.exe' is '[PATH-TO-REPO]/Sort-It/'
-   - The path to 'unsort-it.exe' is '[PATH-TO-REPO]/Sort-It/'
-   - Do not include the actual .exe in that path, only the up to the release.
+   - The path to 'sort-it.exe' and 'unsort-it.exe is '[PATH-TO-REPO]/Sort-It/'
+   - Do not include the actual .exe in that path, only the up to and including the repo.
    - This is what mine looks like in my Environment Variables > System Variables > Path:
    
-     ![My Paths](./assets/mypaths.png)
+<img src="assets/mypaths.png" alt="drawing" width="400"/>
 
 3. Type 'cmd' in the address bar of the directory you'd like to sort (or just cd into it through powershell), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
 
@@ -39,7 +38,7 @@
 
 # Installation (Linux & MacOS)
 
-1. As of right now Linux & MacOS users must have **'wine'** installed as .exe files are Windows executables, and wine allows Unix system to run .exes in that environment.
+1. As of right now Linux & MacOS users must have **'wine'** installed as **'sort-it'** and **'unsort-it'** files are Windows .exe files, and wine allows Unix systems to run .exes in their environemnt.
    - You can find instructions for installing wine [here](https://wiki.winehq.org/Download).
 2. Once wine is installed, simply clone the repository somewhere that you **do not** plan to sort (I recommend your home directory, which makes the command simpler).
 3. Make sure that you give **sort-it** and **unsort-it** execution privileges if necessary.
