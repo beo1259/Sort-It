@@ -27,24 +27,24 @@
 # Installation (Windows)
 
 1. Clone this repository somewhere that you will **not be sorting** (I recommend putting it somewhere in your root directory).
-2. Add the path to 'sort-it.exe' and 'unsort-it.exe' to your environment variables.
-   - The path to 'sort-it.exe' and 'unsort-it.exe is '[PATH-TO-REPO]/Sort-It/'
+2. Add the path to 'sortme.exe' and 'unsortme.exe' to your environment variables.
+   - The path to 'sortme.exe' and 'unsortme.exe is '[PATH-TO-REPO]/Sort-It/'
    - Do not include the actual .exe in that path, only the path up to and including the repository.
    - This is what mine looks like in my Environment Variables > System Variables > Path:
    
 <img src="assets/mypaths.png" alt="drawing" width="400"/>
 
-3. Type 'cmd' in the address bar of the directory you'd like to sort (or just cd into it through powershell), and type **'sort-it'** or **'unsort-it'** to sort/unsort your directories!
+3. Type 'cmd' in the address bar of the directory you'd like to sort (or just cd into it through powershell), and type **'sortme'** or **'unsortme'** to sort/unsort your directories!
 
 ![Demo](./assets/demo2.png)
 
 # Installation (Linux & MacOS)
 
-1. As of right now Linux & MacOS users must have **'wine'** installed as **'sort-it'** and **'unsort-it'** files are Windows .exe files, and wine allows Unix systems to run exe files in their environemnt.
+1. As of right now Linux & MacOS users must have **'wine'** installed as these programs are Windows .exe files, and wine allows Unix systems to run exe files in their environemnt.
    - You can find instructions for installing wine [here](https://wiki.winehq.org/Download).
 2. Once wine is installed, simply clone the repository somewhere that you **do not** plan to sort (I recommend your home directory, which makes the command simpler).
-3. Make sure that you give **sort-it** and **unsort-it** execution privileges if necessary.
-4. Then you can run ```wine [PATH-TO-REPO]/Sort-It/sort-it.exe```
+3. Make sure that you give **sortme.exe** and **unsortme.exe** execution privileges if necessary.
+4. Then you can run ```wine [PATH-TO-REPO]/Sort-It/sortme.exe``` and ```wine [PATH-TO-REPO]/Sort-It/sortme.exe```
    
 ![Demo](./assets/demo3.png)
 
